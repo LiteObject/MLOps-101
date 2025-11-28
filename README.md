@@ -68,6 +68,45 @@ The packaged model is released into a production environment. This could be as a
 
 Once live, the model is continuously monitored for performance degradation, errors, latency issues, and data drift. Effective monitoring enables early detection of problems before they significantly impact business outcomes.
 
+## Model Deployment Pipeline
+
+The following sequence diagram shows the interactions between teams and systems during model deployment:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant DS as Data Scientist
+    participant VCS as Version Control
+    participant CI as CI/CD Pipeline
+    participant REG as Model Registry
+    participant SEC as Security/Compliance
+    participant OPS as Operations
+    participant PROD as Production
+    participant MON as Monitoring
+
+    DS->>VCS: Push model code & artifacts
+    VCS->>CI: Trigger pipeline
+    CI->>CI: Run tests & validation
+    CI->>SEC: Security scan
+    SEC-->>CI: Approval
+    CI->>REG: Register model version
+    REG-->>CI: Model registered
+    CI->>OPS: Request deployment
+    OPS->>PROD: Deploy model (canary/blue-green)
+    PROD-->>OPS: Deployment complete
+    OPS->>MON: Enable monitoring
+    MON-->>OPS: Monitoring active
+    
+    loop Continuous Monitoring
+        MON->>MON: Check metrics & drift
+        alt Drift Detected
+            MON->>DS: Alert: Retraining needed
+            DS->>DS: Retrain model
+            DS->>VCS: Push updated model
+        end
+    end
+```
+
 ### 9. Model Maintenance & Retraining
 
 If monitoring detects "drift" (where the model's accuracy drops because real-world data has changed), the model is retrained on new data. This triggers a loop back to the development stage, creating a continuous improvement cycle.
