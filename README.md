@@ -12,24 +12,55 @@ The following diagram illustrates the standard MLOps lifecycle activities:
 
 ```mermaid
 flowchart TD
-    A[Problem Definition & Business Understanding] -->|1| B[Data Collection & Preparation]
-    B -->|2| C[Feature Engineering]
-    C -->|3| D[Model Development & Experimentation]
-    D -->|4| E[Model Validation & Evaluation]
-    E -->|5| F[Model Packaging]
-    F -->|6| G[Model Deployment]
-    G -->|7| H[Model Monitoring]
-    H -->|8| I{Performance Drift?}
-    I -->|9 Yes| J[Model Maintenance & Retraining]
-    J -->|10| D
-    I -->|No| H
-    
-    subgraph "Governance & Automation"
-    K[CI/CD Pipelines] -.-> D
-    K -.-> G
-    L[Security & Compliance] -.-> B
-    L -.-> G
+    subgraph DATA["📊 Data Phase"]
+        A[🎯 Problem Definition<br/>& Business Understanding]
+        B[📥 Data Collection<br/>& Preparation]
+        C[⚙️ Feature Engineering]
     end
+
+    subgraph MODEL["🧠 Model Phase"]
+        D[🔬 Model Development<br/>& Experimentation]
+        E[✅ Model Validation<br/>& Evaluation]
+        F[📦 Model Packaging]
+    end
+
+    subgraph DEPLOY["🚀 Deployment Phase"]
+        G[🌐 Model Deployment]
+        H[📈 Model Monitoring]
+        I{⚠️ Performance<br/>Drift?}
+    end
+
+    subgraph MAINTAIN["🔄 Maintenance"]
+        J[🔧 Model Maintenance<br/>& Retraining]
+    end
+
+    A -->|1| B
+    B -->|2| C
+    C -->|3| D
+    D -->|4| E
+    E -->|5| F
+    F -->|6| G
+    G -->|7| H
+    H -->|8| I
+    I -->|9 Yes| J
+    J -->|10| D
+    I -.->|No| H
+
+    subgraph GOV["🛡️ Governance & Automation"]
+        K[🔄 CI/CD Pipelines]
+        L[🔒 Security & Compliance]
+    end
+
+    K -.-> D
+    K -.-> G
+    L -.-> B
+    L -.-> G
+
+    style DATA fill:#e1f5fe,stroke:#01579b
+    style MODEL fill:#f3e5f5,stroke:#4a148c
+    style DEPLOY fill:#e8f5e9,stroke:#1b5e20
+    style MAINTAIN fill:#fff3e0,stroke:#e65100
+    style GOV fill:#fce4ec,stroke:#880e4f
 ```
 
 ## Stage Breakdown
