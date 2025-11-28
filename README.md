@@ -12,17 +12,17 @@ The following diagram illustrates the standard MLOps lifecycle activities:
 
 ```mermaid
 flowchart TD
-    A[Problem Definition & Business Understanding] --> B[Data Collection & Preparation]
-    B --> C[Feature Engineering]
-    C --> D[Model Development & Experimentation]
-    D --> E[Model Validation & Evaluation]
-    E --> F[Model Packaging]
-    F --> G[Model Deployment]
-    G --> H[Model Monitoring]
-    H --> I{Performance Drift?}
-    I -- Yes --> J[Model Maintenance & Retraining]
-    J --> D
-    I -- No --> H
+    A[Problem Definition & Business Understanding] -->|1| B[Data Collection & Preparation]
+    B -->|2| C[Feature Engineering]
+    C -->|3| D[Model Development & Experimentation]
+    D -->|4| E[Model Validation & Evaluation]
+    E -->|5| F[Model Packaging]
+    F -->|6| G[Model Deployment]
+    G -->|7| H[Model Monitoring]
+    H -->|8| I{Performance Drift?}
+    I -->|9 Yes| J[Model Maintenance & Retraining]
+    J -->|10| D
+    I -->|No| H
     
     subgraph "Governance & Automation"
     K[CI/CD Pipelines] -.-> D
