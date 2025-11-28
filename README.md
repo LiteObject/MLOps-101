@@ -1,6 +1,6 @@
 # MLOps 101
 
-Here is a Mermaid diagram illustrating the standard MLOps lifecycle activities, followed by an explanation of each stage.
+This repository is a basic tutorial on MLOps concepts and workflows. It provides an introduction to the key stages and activities involved in operationalizing machine learning models.
 
 ### MLOps Lifecycle Diagram
 
@@ -26,28 +26,28 @@ flowchart TD
     end
 ```
 
-### Explanation of Activities
+### Detailed Breakdown
 
-1.  **Problem Definition & Business Understanding**: This is the foundational stage where specific business objectives are identified (e.g., "predict stock price movements"). Success metrics are defined here to guide the rest of the project.
+1.  **Problem Definition & Business Understanding**: Identify specific business objectives and success metrics.
 
-2.  **Data Collection & Preparation**: Raw data is gathered from various sources. This stage involves cleaning, formatting, and versioning the data to ensure it is usable for training. In your repository, this might involve scripts in `src` that fetch financial data.
+2.  **Data Collection & Preparation**: Gather, clean, format, and version raw data.
 
-3.  **Feature Engineering**: Raw data is transformed into meaningful features that machine learning algorithms can understand. This includes normalization, encoding, and selecting the most relevant variables.
+3.  **Feature Engineering**: Transform raw data into meaningful features (normalization, encoding, etc.).
 
-4.  **Model Development & Experimentation**: Data scientists select architectures, train models, and tune hyperparameters. Experiment tracking is crucial here to log parameters and results.
+4.  **Model Development & Experimentation**: Select architectures, train models, tune hyperparameters, and track experiments.
 
-5.  **Model Validation & Evaluation**: The model is tested against a holdout dataset to ensure it performs well on unseen data. Automated testing (like the contents of your `tests/` directory) ensures the code is robust before moving forward.
+5.  **Model Validation & Evaluation**: Test against holdout datasets and run automated tests.
 
-6.  **Model Packaging**: The model and its dependencies are bundled into a deployable format, often using containers.
-    *   *Repo Context*: Your `Dockerfile` and `requirements.txt` are key components here, ensuring the environment is reproducible.
+6.  **Model Packaging**: Bundle the model and dependencies (e.g., Docker, requirements.txt).
 
-7.  **Model Deployment**: The packaged model is released into a production environment (e.g., a REST API or batch process).
-    *   *Repo Context*: Your `docker-compose.yml` facilitates local or server deployment orchestration.
+7.  **Model Deployment**: Release to production (REST API, batch process, etc.).
 
-8.  **Model Monitoring**: Once live, the model is continuously monitored for performance degradation, errors, or latency issues.
+8.  **Model Monitoring**: Track performance degradation, errors, or latency.
 
-9.  **Model Maintenance & Retraining**: If monitoring detects "drift" (where the model's accuracy drops because real-world data has changed), the model is retrained on new data, often triggering a loop back to the development stage.
+9.  **Model Maintenance & Retraining**: Handle "drift" by retraining on new data.
 
-10. **Governance & Automation**:
-    *   **CI/CD**: Continuous Integration and Deployment pipelines (likely found in your `.github/` directory) automate testing and deployment tasks.
-    *   **Security**: Ensuring data privacy and access controls throughout the lifecycle.
+10. **Governance & Automation**: CI/CD pipelines for testing/deployment and security checks for data privacy.
+
+## Future Steps
+
+More tutorial steps coming soon...
