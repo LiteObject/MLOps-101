@@ -13,24 +13,24 @@ The following diagram illustrates the standard MLOps lifecycle activities:
 ```mermaid
 flowchart TD
     subgraph DATA["📊 Data Phase"]
-        A[🎯 Problem Definition<br/>& Business Understanding]
-        B[📥 Data Collection<br/>& Preparation]
-        C[⚙️ Feature Engineering]
+        A[Problem Definition<br/>& Business Understanding]
+        B[Data Collection<br/>& Preparation]
+        C[Feature Engineering]
     end
 
     subgraph MODEL["🧠 Model Phase"]
-        D[🔬 Model Development<br/>& Experimentation]
-        E[✅ Model Validation<br/>& Evaluation]
-        F[📦 Model Packaging]
+        D[Model Development<br/>& Experimentation]
+        E[Model Validation<br/>& Evaluation]
+        F[Model Packaging]
     end
 
     subgraph DEPLOY["🚀 Deployment Phase"]
-        G[🌐 Model Deployment]
-        H[📈 Model Monitoring]
-        I{⚠️ Performance<br/>Drift?}
+        G[Model Deployment]
+        H[Model Monitoring]
+        I{Performance<br/>Drift?}
     end
 
-    subgraph MAINTAIN["🔄 Maintenance"]
+    subgraph MAINTAIN["Maintenance"]
         J[🔧 Model Maintenance<br/>& Retraining]
     end
 
@@ -46,9 +46,9 @@ flowchart TD
     J -->|10| D
     I -.->|No| H
 
-    subgraph GOV["🛡️ Governance & Automation"]
-        K[🔄 CI/CD Pipelines]
-        L[🔒 Security & Compliance]
+    subgraph GOV["Governance & Automation"]
+        K[CI/CD Pipelines]
+        L[Security & Compliance]
     end
 
     K -.-> D
